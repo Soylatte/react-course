@@ -1,3 +1,4 @@
+/* eslint-disable */ //lint 끄는 기능
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
@@ -9,9 +10,16 @@ function App() {
   // post를 h4에 삽입
 
    let [a,b] = useState('activities');
-   let [logo, setLogo] = useState('Blog', 'food spot' , 'restaurant'); 
+   let [logo, setLogo] = useState(['Blog', 'food spot' , 'restaurant']); 
    //변수와 state 차이점?? 일반 변수는 갑자기 변경되면, html에 자동으로 변경안됨
    // state는 갑자기 변경되면 html은 자동 재렌더링됨 변경가능
+
+   let [like, n] = useState(0);
+   function 함수() {
+    console.log(1);
+
+   }
+   // function 긴 자바스크립트를 짧게
 
    //자료를 보관할때 쓰는 state
    // [a, b] 중 b는 state 변경을 도와주는 함수
@@ -26,21 +34,19 @@ function App() {
   return ( //return 안에는 태그 2개이상 기입금지
     <div className="App">
       <div className="black-nav">
-        <h3>{ post }</h3>
+        <h3>{ post }  </h3> 
       </div>
       <div className="list">
-      <h4>Food spot</h4>
+      <h4>Food spot <span onClick={ 함수 }> Like </span> { like }</h4>
       <p>20.08.23</p>
       <div className="list">
-        <h5> { a }</h5>
+        <h5> { a[0]}</h5>
         <p>23.08.23</p>
         <div className="list">
-          <h6>{ a }</h6>
-          <div className="list">
-            <h7>{ a }</h7>
+          <h6>{ a[1] }</h6>
+         
 
-          </div>
-
+        
         </div>
       </div>
       </div>
