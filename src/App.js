@@ -37,7 +37,8 @@ function App() {
         <h3>{ post }  </h3> 
       </div>
       <div className="list">
-      <h4>Food spot <span onClick={ 함수 }> Like </span> { like }</h4>
+      <h4>Food spot <span onClick={function}> Like </span> { like }</h4>
+      // state 변경은 등호사용 안됨 html 에서 변경안됨
       <p>20.08.23</p>
       <div className="list">
         <h5> { a[0]}</h5>
@@ -56,3 +57,6 @@ function App() {
 
 export default App;
 // 자주 변경될거같은 html 부분은 state로 만들어놓기
+// 24.08 learned
+// 1. onClick = {function}
+// 2. change state with state change function
