@@ -25,7 +25,8 @@ function Nav(props){
     lis.push(<li key={t.id}>
       <a id={t.id} href={'/read/'+t.id} onClick={(event=>{
         event.preventDefault();
-        props.onChangeMode(event.target.id);
+        props.onChangeMode(Number(event.target.id));
+        // Number 함수는 숫자로 컨버팅해줌 id 값을 숫자로 변경
         // event를 유발시킨 tag 호출
         // 내부 function 호출
       })}>{t.title}</a></li>)
@@ -61,6 +62,7 @@ function App() {
   // [1]번째 값으로 변경
   const [mode,setMode] = useState('WELCOME');
   // setMode로 mode의값을 바꿀수있다
+  const [id,setID] = useSTate(null); 
   console.log('_mode',_mode);
 
   const topics = [
@@ -75,11 +77,20 @@ function App() {
   if(mode==='WELCOME') {
     content = <Article title="Welcome" body="Hello, WEB"></Article>
 
-  } else if(mode === 'READ'){
-    content = <Article title="Read" body="Hello, WEB"></Article>
+  } else if(mode === 'READ'){ 
+    for(let i=0; i < topics.length; i++){
+      console.log(topics[i].id === id);
+      //id값은 setID로부터 옴 _id는 
+      if(topics[i].id === id){
+        title = topics[i].title;
+        body = topics[i].body;
+        
+      }
+    }
+    content = <Article title={title} body={body}></Article>
 
   }
-  return (
+  return ( 
     <div>
       <Header title="WEB" onChangeMode={function(){
       setModemode = 'WELCOME';
@@ -87,6 +98,7 @@ function App() {
     <Nav topics={topics} onChangeMode={(id)=>{
        setModeode = 'READ';
        // mode 의 값을 바꿔도 변하지 않음 
+       setID(_id);
       }}></Nav>
       <Article title="Welcome" body="Hello, WEB"></Article>
     </div>
