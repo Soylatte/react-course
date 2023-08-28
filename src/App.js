@@ -52,6 +52,24 @@ function Article(props){
  
 }
 
+function Create(){
+  return <article>
+    <h2>Create</h2>
+    <form onSubmit={event=>{
+      //onSubmit 페이지가 리로드가 된다
+      event.preventDefault();
+      const title = event.target.title.value;
+      //event 가 발생한 태그를 타겟 = form tag
+
+    }}>
+      <p><input type="text" name="title" placeholder="title"/></p>
+      <p><textarea name="body" placeholder="body"></textarea></p>
+      <p><input type="submit" value="Create"></input></p>
+      
+       </form>  
+      </article>
+}
+
 function App() {
   //const mode = useState('WELCOME');
   // useState로 상태를 만듬
@@ -88,7 +106,10 @@ function App() {
       }
     }
     content = <Article title={title} body={body}></Article>
-
+  } else if (mode === 'CREATE'){
+    content = <Create onCreate={(title,body)=>{
+      
+    }}></Create>
   }
   return ( 
     <div>
@@ -100,7 +121,13 @@ function App() {
        // mode 의 값을 바꿔도 변하지 않음 
        setID(_id);
       }}></Nav>
-      <Article title="Welcome" body="Hello, WEB"></Article>
+      {content}
+      <a href="/create" onClick={event=>{
+        event.preventDefault();
+        // url 작동안하게 하는 함수
+        setMode('CREATE');
+      }}>Create</a>
+  
     </div>
   );
 
