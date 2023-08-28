@@ -1,5 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+
 function Header(props){
   console.log('props', props.title);
   return <header>
@@ -50,7 +52,17 @@ function Article(props){
 }
 
 function App() {
-  const mode = 'WELCOME';
+  //const mode = useState('WELCOME');
+  // useState로 상태를 만듬
+  // useState는 상태의 값을 읽을때
+  //const mode = _mode[0];
+  // [0] 번쨰 값으로 읽음
+  //const setMode = _mode[1];
+  // [1]번째 값으로 변경
+  const [mode,setMode] = useState('WELCOME');
+  // setMode로 mode의값을 바꿀수있다
+  console.log('_mode',_mode);
+
   const topics = [
     {id:1, title: 'html', body:'html is...'},
     {id:2, title: 'css', body:'css is...'},
@@ -70,10 +82,10 @@ function App() {
   return (
     <div>
       <Header title="WEB" onChangeMode={function(){
-      mode = 'WELCOME';
+      setModemode = 'WELCOME';
     }}></Header>
     <Nav topics={topics} onChangeMode={(id)=>{
-       mode = 'READ';
+       setModeode = 'READ';
        // mode 의 값을 바꿔도 변하지 않음 
       }}></Nav>
       <Article title="Welcome" body="Hello, WEB"></Article>
