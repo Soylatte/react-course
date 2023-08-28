@@ -52,7 +52,7 @@ function Article(props){
  
 }
 
-function Create(){
+function Create(props){
   return <article>
     <h2>Create</h2>
     <form onSubmit={event=>{
@@ -60,6 +60,8 @@ function Create(){
       event.preventDefault();
       const title = event.target.title.value;
       //event 가 발생한 태그를 타겟 = form tag
+      const body = event.target.body.value;
+      props.onCreate(title, body);
 
     }}>
       <p><input type="text" name="title" placeholder="title"/></p>
@@ -82,15 +84,16 @@ function App() {
   // setMode로 mode의값을 바꿀수있다
   const [id,setID] = useSTate(null); 
   console.log('_mode',_mode);
+  
 
-  const topics = [
+  const useState  ([
     {id:1, title: 'html', body:'html is...'},
     {id:2, title: 'css', body:'css is...'},
     {id:3, title: 'javascript', body:'javascript is...'}
 
 
 
-  ]  
+  ]);
   let content = null;
   if(mode==='WELCOME') {
     content = <Article title="Welcome" body="Hello, WEB"></Article>
