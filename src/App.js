@@ -3,7 +3,12 @@ import './App.css';
 function Header(props){
   console.log('props', props.title);
   return <header>
-  <h1><a href="/">{props.title}</a></h1> 
+  <h1><a href="/" onClick={function(event){
+    event.preventDefault();
+    props.onChangeMode();
+    // function 호출
+
+  }}>{props.title}</a></h1> 
 </header>
 }
 function Nav(props){
@@ -38,6 +43,7 @@ function Article(props){
 }
 
 function App() {
+  const mode = 'WELCOME';
   const topics = [
     {id:1, title: 'html', body:'html is...'},
     {id:2, title: 'css', body:'css is...'},
@@ -46,11 +52,20 @@ function App() {
 
 
   ]  
+  let content = null;
+  if(mode==='WELCOME') {
+    content = <Article title="Welcome" body="Hello, WEB"></Article>
+
+  } else if(mode === 'READ'){
+    content = <Article title="Read" body="Hello, WEB"></Article>
+
+  }
   return (
     <div>
-      <Header title="WEB"></Header>
+      <Header title="WEB" onChangeMode={function()
+      alert('Header')}></Header>
       <Nav topics={topics}></Nav>
-      <Article title="Welcome" body="Hello, WEB"></Article>
+      {content}
     </div>
   );
 
