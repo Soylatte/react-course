@@ -15,9 +15,9 @@ function Nav(props){
   for(let i=0; i<props.topics.length;i++){
     //topics.length 만큼 반복
     let t = props.topics.[i];
-    lis.push(<li><a href={'/read/'+t.id}>{t.title}</a></li>)
+    lis.push(<li key={t.id}><a href={'/read/'+t.id}>{t.title}</a></li>)
     // link 생성
-    
+
   }
 
   
@@ -40,8 +40,8 @@ function Article(props){
 function App() {
   const topics = [
     {id:1, title: 'html', body:'html is...'},
-    {id:1, title: 'css', body:'css is...'},
-    {id:1, title: 'javascript', body:'javascript is...'}
+    {id:2, title: 'css', body:'css is...'},
+    {id:3, title: 'javascript', body:'javascript is...'}
 
 
 
