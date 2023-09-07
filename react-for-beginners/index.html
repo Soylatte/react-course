@@ -6,17 +6,31 @@
     <title>Document</title>
 </head>
 <body>
-    <span>Total clicks:0</span>
-    <button id="btn">Click me</button>
+    <div id="root"></div>
 </body>
-<script>
-    let counter = 0;
-    const button = document.querySelector('btn');
-    const span = document.querySelector("span");
-    function handleClick(){
-        counter =  counter + 1;
-        span.innerText = `Total clicks: {${counter}}`;
-    }
-    button.addEventListener("click", handleClick);
+    <script>
+        const root = document.getElementById("root");
+        const h3 = React.createElement (
+            "h3",{
+                onMouseEnter: () => console.log("mouse enter"),
+
+            },
+        
+             "Hello I'm a span"
+        ); 
+        // ()안은 html 이랑 같아야함
+        // first argument is span 
+        // content can be anything
+        const btn = React.createElement("button",{
+            onclick:() => console.log("im clicked"),
+
+        },
+        "Click me");
+        const container = React.createElement("div",null, [h3, btn]);
+        ReactDOM.render(btn,root);
+        // render = 사용자에게 보여줌
+        
+        
     </script>
+
 </html>

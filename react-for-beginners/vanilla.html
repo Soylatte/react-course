@@ -6,17 +6,17 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="root"></div>
+    <span>Total clicks:0</span>
+    <button id="btn">Click me</button>
 </body>
-    <script>
-        const root = document.getElementById("root");
-        const span = React.createElement("span",{id:"sexy-span"}, style: {color: "red"}, "Hello I'm a span"
-        ); // ()안은 html 이랑 같아야함
-        // first argument is span 
-        // content can be anything
-        ReactDOM.render(span,root);
-        // render = 사용자에게 보여줌
-        
+<script>
+    let counter = 0;
+    const button = document.querySelector('btn');
+    const span = document.querySelector("span");
+    function handleClick(){
+        counter =  counter + 1;
+        span.innerText = `Total clicks: {${counter}}`;
+    }
+    button.addEventListener("click", handleClick);
     </script>
-
 </html>
